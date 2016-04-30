@@ -1,0 +1,4 @@
+<!-- VUELOS DISPONIBLES -->
+<%
+    out.println("ESTA ES LA PAGINA DE VUELOS DISPONIBLES");
+%>
