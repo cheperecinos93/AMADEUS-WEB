@@ -6,18 +6,19 @@
     database db=new database();
     db.conectar();
     //RECUPERAR DESTINOS 
-    String sqldes="CALL Vuelos_PA0002()";
+    String sqldes="SELECT * FROM aeropuertos";
     ResultSet rsdes = db.query(sqldes);
     rsdes.last();
     int numrsdes=rsdes.getRow();
     rsdes.beforeFirst();
     
     //RECUPERAR ORIGEN
-    String sqlorg="CALL Vuelos_PA0026()";
+    String sqlorg="SELECT * FROM aeropuertos Where idaeropuertos='SAL'";
     ResultSet rsorg = db.query(sqlorg);
     rsorg.last();
     int numrsorg=rsorg.getRow();
     rsorg.beforeFirst();
+    
 %>
 <!--INICIO DEL CUERPO DEL FORMULARIO -->
 
@@ -32,7 +33,7 @@
                 <% if(numrsorg>0){
                    rsorg.first();
                 %>
-                <option value="<%=rsorg.getString("ciudad")%>"><%=rsorg.getString("ciudad")%> , <%=rsorg.getString("aeropuerto")%></option>
+                <option value="<%=rsorg.getString("idaeropuertos")%>"><%=rsorg.getString("ciudad")%> , <%=rsorg.getString("aeropuerto")%> (<%=rsorg.getString("idaeropuertos")%>)</option>
                 <%
                     }
                     else{
@@ -51,7 +52,7 @@
                 <% if(numrsdes>0){
                    while(rsdes.next()){    
                 %>
-                <option value="<%=rsdes.getString("ciudad")%>"><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%></option>
+                <option value="<%=rsdes.getString("idaeropuertos")%>"><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%> (<%=rsdes.getString("idaeropuertos")%>)</option>
                 <%
                     }
                     }
@@ -60,6 +61,7 @@
                 <option value="No se han agregado destinos">No se han agregado destinos</option>
                 <%
                     }
+                    db.desconectar();
                 %>
             </select>
         </div>
@@ -78,33 +80,4 @@
     </div>        
 </form>
 </div>
-<script type="text/javaScript" src="estado.js"></script>
-<script type="text/javascript">
-$( "#fecha_vuelo" ).datepicker({    
-    dateFormat: 'yy-mm-dd',
-    maxDate: "7D"
-  });
- 
-  $("#estado_vuelos").submit(function(event){
-    event.preventDefault();
-    var origenvar = $("#origen").val();
-    var destinovar = $("#destino").val();
-    var fecha_vuelovar = $("#fecha_vuelo").val();
-    $(".menucolor").attr("style", "border-left: 6px solid #000;");
-    $("#opc2").attr("style", "border-left: 6px solid #ff0039;");
-    $("#tituloOpc").html("ESTADO DE VUELO");
-    $("#contenidoOpc").html("<br><br><br><center><img src=\"../dist/images/loader.gif\" width=\"25\" height=\"27\"><p>Cargando . . .</p></center>");
-    $.ajax({
-        type:"POST",
-        url: "tabla_estado.jsp",
-        dataType:"text",
-        data:{
-            origen:origenvar,
-            destino:destinovar,
-            fecha_vuelo:fecha_vuelovar
-  	}
-    }).done(function(data){
-        $("#contenidoOpc").hide().html(data);
-    });
- });
-</script>
+<script type="text/javaScript" src="../vuelos/estado.js"></script>
