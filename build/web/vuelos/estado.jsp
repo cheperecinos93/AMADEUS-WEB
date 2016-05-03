@@ -24,11 +24,11 @@
 <h4>Selecciona un origen y destino para conocer el estado de un vuelo:</h4>
 <br>
 <div class="col-md-6">
-<form action="" method="post" name="estado_vuelos" class="">
+    <form id="estado_vuelos" method="POST">
     <div class="form-group col-md-9">
         <label class=" control-label text-left">Ciudad de origen</label>
         <div class="">
-            <select name="cd_origen" class="form-control input-sm" required>
+            <select name="origen" id="origen" class="form-control input-sm" required>
                 <% if(numrsorg>0){
                    rsorg.first();
                 %>
@@ -47,7 +47,7 @@
     <div class="form-group col-md-9">
         <label class=" control-label">Ciudad de destino</label>
         <div class="">
-            <select name="cd_destino" class="form-control input-sm" required>
+            <select name="destino" id="destino" class="form-control input-sm" required>
                 <% if(numrsdes>0){
                    while(rsdes.next()){    
                 %>
@@ -68,7 +68,7 @@
     <div class="form-group col-md-9">
         <label class=" control-label">Fecha de vuelo</label>
         <div class="">
-           <input class="form-control input-sm datepicker"  type="text" id="fecha_vuelo" placeholder="Seleccione una fecha" required readonly> 
+           <input class="form-control input-sm datepicker"  type="text" id="fecha_vuelo" name="fecha_vuelo" placeholder="Seleccione una fecha" required> 
         </div>   
     </div>
     <div class="form-group">
@@ -78,10 +78,33 @@
     </div>        
 </form>
 </div>
+<script type="text/javaScript" src="estado.js"></script>
 <script type="text/javascript">
-    $( "#fecha_vuelo" ).datepicker({
-       
+$( "#fecha_vuelo" ).datepicker({    
     dateFormat: 'yy-mm-dd',
     maxDate: "7D"
   });
-    </script>
+ 
+  $("#estado_vuelos").submit(function(event){
+    event.preventDefault();
+    var origenvar = $("#origen").val();
+    var destinovar = $("#destino").val();
+    var fecha_vuelovar = $("#fecha_vuelo").val();
+    $(".menucolor").attr("style", "border-left: 6px solid #000;");
+    $("#opc2").attr("style", "border-left: 6px solid #ff0039;");
+    $("#tituloOpc").html("ESTADO DE VUELO");
+    $("#contenidoOpc").html("<br><br><br><center><img src=\"../dist/images/loader.gif\" width=\"25\" height=\"27\"><p>Cargando . . .</p></center>");
+    $.ajax({
+        type:"POST",
+        url: "tabla_estado.jsp",
+        dataType:"text",
+        data:{
+            origen:origenvar,
+            destino:destinovar,
+            fecha_vuelo:fecha_vuelovar
+  	}
+    }).done(function(data){
+        $("#contenidoOpc").hide().html(data);
+    });
+ });
+</script>
