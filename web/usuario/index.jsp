@@ -90,6 +90,7 @@
             </div>
         </div>
         <script type="text/JavaScript" src="../dist/jquery-ui/jquery-ui.js"></script>
+        <script type="text/javaScript" src="../vuelos/disponible.js"></script>
     </body>
 </html>
 <%
