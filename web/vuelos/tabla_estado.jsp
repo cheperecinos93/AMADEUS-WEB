@@ -31,7 +31,7 @@
     rsdes.last();
     int numrsdes=rsdes.getRow();
     rsdes.beforeFirst();
-    
+    String dest = rsdesb.getString("idaeropuertos");
 %>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -56,13 +56,20 @@
     </div>
     <div class="form-group col-md-3">
         <label>Ciudad de destino</label>
-            <select name="destino" id="destino" class="form-control input-sm col-md-3" required>
-                <option value="<%=rsdesb.getString("idaeropuertos")%>"><%=rsdesb.getString("ciudad")%> , <%=rsdesb.getString("aeropuerto")%> (<%=rsdesb.getString("idaeropuertos")%>)</option>
+            <select name="destino" id="destino" class="form-control input-sm col-md-3" required>                
                 <% if(numrsdes>0){
                    while(rsdes.next()){    
+                       String aux = rsdes.getString("idaeropuertos");
+                   if(dest.equals(aux)){
+                %>
+                <option value="<%=rsdes.getString("idaeropuertos")%>" selected><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%> (<%=rsdes.getString("idaeropuertos")%>)</option>
+                <%
+                    }else{
                 %>
                 <option value="<%=rsdes.getString("idaeropuertos")%>"><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%> (<%=rsdes.getString("idaeropuertos")%>)</option>
                 <%
+                    }
+                
                     }
                     }
                     else{
