@@ -41,7 +41,8 @@
             <!-- FORMULARIO DE REGISTRO -->
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-12 col-xs-12">
-                    <form>
+                    <div class="" role="alert" id="alerta"></div>
+                    <form method="post" id="registro">
                     <div class="well well-sm">
                         <div class="row">
                         <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1 col-sm-12 col-xs-12">
@@ -50,7 +51,7 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span> Nombre:</span>
-                            <input type="text" class="form-control input-sm" id="nombre" name="nombre" required>
+                            <input type="text" class="form-control input-sm" id="nombre" name="nombre" required pattern="[A-Za-z ]{3-50}">
                         </div>
                         <br>
                         <div class="input-group">
@@ -60,37 +61,37 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span> Usuario:</span>
-                            <input type="text" class="form-control input-sm" id="usuario" name="usuario" required>
+                            <input type="text" class="form-control input-sm" id="usuario" name="usuario" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Contrase&ntilde;a:</span>
-                                <input type="password" class="form-control input-sm" id="pass" name="pass" required>
+                                <input type="password" class="form-control input-sm" id="passreg" name="passreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="input-group">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Confirmar:</span>
-                                <input type="password" class="form-control input-sm" id="confipass" name="confipass" required>
+                                <input type="password" class="form-control input-sm" id="confipassreg" name="confipassreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             </div>
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-phone-alt"></span> Telefono:</span>
-                            <input type="text" class="form-control input-sm" id="telefono" name="telefono" required>
+                            <input type="text" class="form-control input-sm" id="telefono" name="telefono" title="00000000" required pattern="[0-9]{8}">
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-plane"></span> Pasaporte:</span>
-                            <input type="text" class="form-control input-sm" id="pasaporte" name="pasaporte" required>
+                            <input type="text" class="form-control input-sm" id="pasaporte" name="pasaporte" title="A0000000" required pattern="[a-zA-Z]{1}[0-9]{7}">
                         </div>
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-credit-card"></span> Tarjeta de credito:</span>
-                            <input type="text" class="form-control input-sm" id="tcredito" name="tcredito" required>
+                            <input type="text" class="form-control input-sm" id="tcredito" name="tcredito" title="0000000000000000" required pattern="[0-9]{13,16}">
                         </div>
                         <br>
                         <center><button class="btn btn-danger btn-md" type="submit">Registrarse</button></center>
@@ -117,5 +118,6 @@
             </section>
             </div>
         </div>
+    <script type="text/javaScript" src="registro.js"></script>
     </body>
 </html>
