@@ -54,25 +54,25 @@
                             <input type="text" class="form-control input-sm" id="nombre" name="nombre" required pattern="[A-Za-z ]{3-50}">
                         </div>
                         <br>
-                        <div class="input-group">
+                        <div class="input-group" id="divcorreo">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-envelope"></span> Correo:</span>
-                            <input type="email" class="form-control input-sm" id="correo" name="correo" required>
+                            <input type="email" class="form-control input-sm " id="correo" name="correo" required>
                         </div>
                         <br>
-                        <div class="input-group">
+                        <div class="input-group" id="divusuario">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span> Usuario:</span>
                             <input type="text" class="form-control input-sm" id="usuario" name="usuario" required pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="input-group">
+                            <div class="input-group" id="divpass">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Contrase&ntilde;a:</span>
                                 <input type="password" class="form-control input-sm" id="passreg" name="passreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="input-group">
+                            <div class="input-group" id="divpass">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Confirmar:</span>
                                 <input type="password" class="form-control input-sm" id="confipassreg" name="confipassreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             </div>

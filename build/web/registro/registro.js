@@ -33,12 +33,30 @@
             tcredito:vtcredito,
   	}
     }).done(function(data){
+            var res = data.toString();
+            if(res==1){
             $("#alerta").removeClass();
             $("#alerta").addClass('alert alert-success');
             $("#alerta").html("<strong>Registro Exitoso: </strong> Gracias por registrarse en AMADEUS AIRLINES ya puede <a href='../index.jsp'><strong style='color:white'><u>iniciar sesion.</u></strong></a>");
+            $("#alerta").show();
             $("#registro")[0].reset();
-            $("#alerta").show();    
-  
+            }
+            else if(res==2){
+            $("#alerta").removeClass();
+            $("#alerta").addClass('alert alert-danger');
+            $("#alerta").html("<strong>Error de Resitro: </strong> El nombre de Usuario no se encuentra disponible");
+            $("#alerta").show();
+            $("#usuario").val("");
+            $("#usuario").focus();
+            }
+            else {    
+            $("#alerta").removeClass();
+            $("#alerta").addClass('alert alert-danger');
+            $("#alerta").html("<strong>Error de Resitro: </strong> El correo ya se encuentra registrado.");
+            $("#alerta").show();
+            $("#correo").val("");
+            $("#correo").focus();
+            } 
     }).fail(function(data) {
             $("#alerta").removeClass();
             $("#alerta").addClass('alert alert-danger');
