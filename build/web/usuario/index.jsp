@@ -16,6 +16,8 @@
         <link href="../dist/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../dist/toastr/toastr.min.css" rel="stylesheet" media="screen">
         <link href="../dist/bootstrap/css/simple-sidebar.css" rel="stylesheet" media="screen">
+        <link href="../dist/jquery-ui/jquery-ui.css" rel="stylesheet" media="screen">
+        
         <script type="text/JavaScript" src="../dist/jquery/jquery-2.1.4.min.js"></script>
         <script type="text/JavaScript" src="../dist/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/JavaScript" src="../dist/toastr/toastr.min.js"></script>
@@ -87,6 +89,8 @@
                 </script>                
             </div>
         </div>
+        <script type="text/JavaScript" src="../dist/jquery-ui/jquery-ui.js"></script>
+        <script type="text/javaScript" src="../vuelos/disponible.js"></script>
     </body>
 </html>
 <%
