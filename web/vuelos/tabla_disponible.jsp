@@ -31,8 +31,8 @@
     ResultSet rsdes = db.query(sqldes);
     rsdes.last();
     int numrsdes=rsdes.getRow();
-    rsdes.beforeFirst();
-    
+    rsdes.beforeFirst();    
+    String dest = rsdesb.getString("idaeropuertos");
 %>
 <div class="panel panel-default">
   <div class="panel-body">
@@ -60,9 +60,16 @@
             <select name="destino" id="destino" class="form-control input-sm col-md-3" required>                
                 <% if(numrsdes>0){
                    while(rsdes.next()){    
+                   String aux = rsdes.getString("idaeropuertos");
+                   if(dest.equals(aux)){
+                %>
+                <option value="<%=rsdes.getString("idaeropuertos")%>" selected><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%> (<%=rsdes.getString("idaeropuertos")%>)</option>
+                <%
+                    }else{
                 %>
                 <option value="<%=rsdes.getString("idaeropuertos")%>"><%=rsdes.getString("ciudad")%> , <%=rsdes.getString("aeropuerto")%> (<%=rsdes.getString("idaeropuertos")%>)</option>
                 <%
+                    }
                     }
                     }
                     else{
