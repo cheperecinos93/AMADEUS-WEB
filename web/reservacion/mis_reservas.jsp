@@ -2,8 +2,8 @@
 <%@page import="config.*" %>
 <%@page import="java.sql.*" %>
 
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css">
-<script src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="../dist/data_table/jquery.dataTables.min.css">
+<script src="../dist/data_table/jquery.dataTables.min.js"></script>
 
 <%
     String id_user = (String)session.getAttribute("iduser");
