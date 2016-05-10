@@ -22,7 +22,7 @@
 %>
 <!--INICIO DEL CUERPO DEL FORMULARIO -->
 
-<h4>Selecciona un origen y destino para conocer los vuelos disponibles:</h4>
+<h4><img src="../dist/images/avion.png" width="35" height="35"> Selecciona un origen y destino para conocer los vuelos disponibles:</h4>
 <br>
 <div class="col-md-6 col-lg-6 col-sm-6">
     <form id="vuelos_disponibles" method="POST">

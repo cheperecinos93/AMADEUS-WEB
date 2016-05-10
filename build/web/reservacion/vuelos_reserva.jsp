@@ -173,13 +173,11 @@
             </div>
         </div>
     </div>
-             <h4>Paso 3: Realiza tu reserva</h4>
-             <div class="panel panel-default">
-        <div class="panel-body">
-
-            <div class="btn-group">
-                 <button type="submit" class="btn btn-danger btn-sm btn-block">Realizar Reserva</button>   
-            </div>
+    <h4>Paso 3: Realiza tu reserva</h4>
+    <div class="panel panel-default">
+        <div class="panel-body">            
+                <center><button type="submit" class="btn btn-danger btn-sm">Realizar Reserva</button></center>
+           
         </div>
     </div>
 </form>  

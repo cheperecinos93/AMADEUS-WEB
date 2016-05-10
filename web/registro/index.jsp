@@ -51,7 +51,7 @@
                         <br>
                         <div class="input-group">
                             <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-user"></span> Nombre:</span>
-                            <input type="text" class="form-control input-sm" id="nombre" name="nombre" required pattern="[A-Za-z ]{3-50}">
+                            <input type="text" class="form-control input-sm" id="nombre" name="nombre" required>
                         </div>
                         <br>
                         <div class="input-group" id="divcorreo">
@@ -68,13 +68,13 @@
                             <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="input-group" id="divpass">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Contrase&ntilde;a:</span>
-                                <input type="password" class="form-control input-sm" id="passreg" name="passreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                <input type="password" class="form-control input-sm" id="passreg" name="passreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required>
                             </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="input-group" id="divpass">
                                 <span class="input-group-addon input-sm"><span class="glyphicon glyphicon-lock"></span> Confirmar:</span>
-                                <input type="password" class="form-control input-sm" id="confipassreg" name="confipassreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required pattern="(?=^.{5,20}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                <input type="password" class="form-control input-sm" id="confipassreg" name="confipassreg" title="La contraseña debe contener la inicial mayuscula, letras y numeros con longitud 5-20 caracteres" required>
                             </div>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                             <input type="text" class="form-control input-sm" id="tcredito" name="tcredito" title="0000000000000000" required pattern="[0-9]{13,16}">
                         </div>
                         <br>
-                        <center><button class="btn btn-danger btn-md" type="submit">Registrarse</button></center>
+                        <center id="areabtn"><button class="btn btn-danger btn-md" type="submit">Registrarse</button></center>
                         <br>
                         </div>
                         </div>

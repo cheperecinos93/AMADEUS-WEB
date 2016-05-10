@@ -43,14 +43,14 @@
     rs.beforeFirst();
 %>
 <!-- RESERVACION -->
-<center><h4>Lista de Reservas</h4></center>
+<br>
 <div class="table-responsive">          
     <table class="table table-bordered table-hover" id="tabla_reservas" name="tabla_reservas">
         <thead>
             <%
                 if (rows > 0) {
             %>
-            <tr class="danger">
+            <tr class="active">
                 <th>#</th>
                 <th>Fecha del vuelo</th>
                 <th>Clase</th>
@@ -96,7 +96,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><B>Detalles de Reserva</B></h4>
+                <h4 class="modal-title"><img src="../dist/images/avion.png" width="35" height="35"> <B>Detalles de Reserva</B></h4>
             </div>
             <div class="modal-body">
                 <div id="tabla">

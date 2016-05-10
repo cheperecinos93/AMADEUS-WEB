@@ -25,10 +25,22 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            <h4>Tu reserva se ha realizado correctamente y se ha generado el codigo  <%= codigo%> </h4> 
-            <h4>Favor presentar este codigo al momento de confirmar tu reserva</h4>
-            <h4>No olvides confirmar 24 horas antes de la hora de salida de tu vuelo</h4>
-            <h4>Y presentarte 3 horas antes de tu vuelo para evitar demoras</h4>
+            <center>
+                Tu reserva se ha realizado correctamente y se ha generado el codigo  <b><%= codigo%></b><br>
+                Favor presentar este codigo al momento de confirmar tu reserva<br>
+                No olvides confirmar 24 horas antes de la hora de salida de tu vuelo<br>
+                presentarte 3 horas antes de tu vuelo para evitar demoras<br><br>
+                <a href="../reservacion/pdf.jsp?codigo=<%= codigo%>" target="_blank" id="regresar" class="btn btn-success">Continuar</a>
+            </center>
+            <script>
+                $("#regresar").click(function () {
+                    $("#contenidoOpc").html("<br><br><br><center><img src=\"../dist/images/loader.gif\" width=\"25\" height=\"27\"><p>Cargando . . .</p></center>");
+                    $.post("../reservacion/crear.jsp")
+                    .done(function (data) {
+                    $("#contenidoOpc").html(data);
+                    });
+                });
+            </script>
         </div>
     </div>
 <%

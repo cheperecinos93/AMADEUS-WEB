@@ -19,6 +19,7 @@
       $("#passreg").focus();
     }
     else{
+    $("#areabtn").html("<img src=\"../dist/images/loader.gif\" width=\"25\" height=\"27\">");
     $.ajax({
         type:"POST",
         url: "registro.jsp",
@@ -40,6 +41,7 @@
             $("#alerta").html("<strong>Registro Exitoso: </strong> Gracias por registrarse en AMADEUS AIRLINES ya puede <a href='../index.jsp'><strong style='color:white'><u>iniciar sesion.</u></strong></a>");
             $("#alerta").show();
             $("#registro")[0].reset();
+            $("#areabtn").html("<button class=\"btn btn-danger btn-md\" type=\"submit\">Registrarse</button>");
             }
             else if(res==2){
             $("#alerta").removeClass();
@@ -48,6 +50,7 @@
             $("#alerta").show();
             $("#usuario").val("");
             $("#usuario").focus();
+            $("#areabtn").html("<button class=\"btn btn-danger btn-md\" type=\"submit\">Registrarse</button>");
             }
             else {    
             $("#alerta").removeClass();
@@ -56,6 +59,7 @@
             $("#alerta").show();
             $("#correo").val("");
             $("#correo").focus();
+            $("#areabtn").html("<button class=\"btn btn-danger btn-md\" type=\"submit\">Registrarse</button>");
             } 
     }).fail(function(data) {
             $("#alerta").removeClass();
@@ -63,6 +67,7 @@
             $("#alerta").html("<strong>Error de Resitro: </strong> No se pudo completar el registro correctamente.");
             $("#registro")[0].reset();
             $("#alerta").show();
+            $("#areabtn").html("<button class=\"btn btn-danger btn-md\" type=\"submit\">Registrarse</button>");
     });      
     }   
  });

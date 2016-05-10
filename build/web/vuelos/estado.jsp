@@ -22,7 +22,7 @@
 %>
 <!--INICIO DEL CUERPO DEL FORMULARIO -->
 
-<h4>Selecciona un origen y destino para conocer el estado de un vuelo:</h4>
+<h4><img src="../dist/images/avion.png" width="35" height="35"> Selecciona un origen y destino para conocer el estado de un vuelo:</h4>
 <br>
 <div class="col-lg-6 col-md-6 col-sm-6">
     <form id="estado_vuelos" method="POST">

@@ -22,9 +22,9 @@
 %>
 <!--INICIO DEL CUERPO DEL FORMULARIO -->
 
-<h2>REALIZA TU RESERVA DE ACUERDO AL DESTINO QUE PERFIERAS!</h2>
+<h4><img src="../dist/images/avion.png" width="35" height="35"> REALIZA TU RESERVA DE ACUERDO AL DESTINO QUE PERFIERAS</h4>
 <br>
-<div class="col-md-6">
+<div class="col-lg-6 col-md-6 col-sm-6">
     <form id="buscar_vuelo" method="POST">
     <div class="form-group col-md-9">
         <label class=" control-label text-left">Ciudad de origen</label>
@@ -79,5 +79,8 @@
         </div>
     </div>        
 </form>
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6">
+    <img src="../dist/images/promo.png" width="139" height="271" class="pull-right">
 </div>
 <script type="text/javaScript" src="../reservacion/reservas.js"></script>

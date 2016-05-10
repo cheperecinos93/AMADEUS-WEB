@@ -35,6 +35,8 @@
         String sql="INSERT INTO usuarios (nombre,correo,usuario,pass,telefono,pasaporte,tarjeta_credito,estado,rol_idrol) VALUES ('"+nombre+"','"+correo+"','"+usuario+"','"+cifra.md5_encode(pass)+"','"+telefono+"','"+pasaporte+"','"+cifra.md5_encode(tcredito)+"',1,3)";
         db.queryUpdate(sql);
         db.desconectar();
+        Email confirmacion =new Email();
+        confirmacion.msg_registro(correo);
         out.println("1");
         }
 %>

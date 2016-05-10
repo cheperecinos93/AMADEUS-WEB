@@ -37,7 +37,29 @@ public class Email {
         });       
     }
     
-    private void msg_registro(){
+    public void msg_registro(String correo){
+        try {
+            init_msg();
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("amadeusair.info@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correo));
+            message.setSubject("AMADEUS AIR");
+            String html = "<center>\n" +
+            "<h2>BIENVENIDO A AMADEUS AIRLINES</h2>\n" +
+            "<h3>Tu cuenta esta activada y lista para iniciar sesi&oacute;n gracias por preferirnos</h3>\n" +
+            "</center>\n" +
+            "<section style=\"background-color:#ff0039; color:white; text-align:right;\"> AMADEUS AIRLINES <br> Confirmaci&oacute;n de registro</section>";
+            message.setContent(html, "text/html; charset=utf-8");
+            Transport.send(message);
+            System.out.println("Mensaje Enviado"); 
+        }
+        catch (MessagingException e) {
+            System.out.println("Hubo un error al enviar el mensaje.");  
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void msg_reserva(){
         try {
             init_msg();
             Message message = new MimeMessage(session);
@@ -54,24 +76,7 @@ public class Email {
         }
     }
     
-    private void msg_reserva(){
-        try {
-            init_msg();
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("amadeusair.info@gmail.com"));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("rodrigoaguilucho93@hotmail.com"));
-            message.setSubject("AMADEUS AIR");
-            message.setText("AMADEUS AIR PRUEBA");
-            Transport.send(message);
-            System.out.println("Mensaje Enviado"); 
-        }
-        catch (MessagingException e) {
-            System.out.println("Hubo un error al enviar el mensaje.");  
-            throw new RuntimeException(e);
-        }
-    }
-    
-    private void msg_checkin(){
+    public void msg_checkin(){
         try {
             init_msg();
             Message message = new MimeMessage(session);

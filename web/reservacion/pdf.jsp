@@ -1,56 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package config;
-import java.io.*;
-import javax.imageio.ImageIO;
-import java.awt.Desktop;
-import java.io.File;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.Rectangle;
-import com.itextpdf.text.PageSize;
-import java.awt.*;
-import java.sql.ResultSet;
-import javax.swing.*;
-/**
- *
- * @author Familia Aparicio
- */
-public class PDF_create {
-    
-    public String ruta,codigoreserva;    
-    private Image imagen; 
+<%@page import="com.itextpdf.text.Document"%>
+<%@page import="com.itextpdf.text.Paragraph"%>
+<%@page import="com.itextpdf.text.pdf.PdfWriter"%>
+<%@page import="com.itextpdf.text.pdf.*"%>
+<%@page import="java.util.*" session="true"%> 
+<%@page import="config.*" %>
+<%@page import="java.sql.*" %>
+<%@page import="com.itextpdf.text.Image" %>
+<%
+    String codigoreserva=request.getParameter("codigo");
+    response.setContentType("application/pdf");
+    String nombre="",salida="",llegada="",origen="",destino="",iduser="",idvuelo="",fecha="";
+    Image imagen;
     database db = new database();
-    
-    public PDF_create(String codreserva){
-        codigoreserva=codreserva;
-        ruta="Reserva_Vuelo.pdf";
-        try{
-            createPdf();
-        }
-        catch(Exception e){
-            System.out.println("Error en crearcion de PDF");
-        }
-    }
-    
-    public void createPdf() throws DocumentException, IOException {
-        String nombre="",salida="",llegada="",origen="",destino="",iduser="",idvuelo="",fecha="";
-        try{
-            imagen= Image.getInstance(getClass().getResource("/config/icons/logo.png"));
-            imagen.scaleAbsolute(100,28);
-        }
-        catch(Exception e){
-            System.out.println("Error con imagen. . . "+e);
-        }
-        
+    imagen= Image.getInstance(getClass().getResource("/config/icons/logo.png"));
+    imagen.scaleAbsolute(100,28);
         try{
             db.conectar();
             //SQL PARA OBTENER DATOS DE USUARIO DE LA RESERVA GENERADA
@@ -79,11 +42,9 @@ public class PDF_create {
         catch(Exception e){
             System.out.println("Error obteniendo informacion. . . "+e);
         }
-        Document document = new Document(PageSize.LETTER);
-        document.setMargins(10, 10, 260, 290);
-        PdfWriter.getInstance(document, new FileOutputStream(ruta));     
-        document.open();
-        
+    Document document = new Document();
+    PdfWriter.getInstance(document, response.getOutputStream());
+    document.open();
         PdfPTable table = new PdfPTable(2);
         table.getDefaultCell().setBorder(PdfPCell.NO_BORDER);
         PdfPCell imagencell = new PdfPCell(imagen);
@@ -108,7 +69,7 @@ public class PDF_create {
         table.addCell(" ");
         table.addCell(" ");  
         
-        table.addCell("CÃ³digo de reserva: "+codigoreserva);
+        table.addCell("Código de reserva: "+codigoreserva);
         table.addCell("Fecha: "+fecha);
         
         table.addCell(" ");
@@ -132,18 +93,5 @@ public class PDF_create {
         table.addCell(cellnota);
         
         document.add(table);
-        
-        document.close();        
-        abrir();
-    }
-    private void abrir() {
-        try {
-            File path = new File (ruta);            
-            Desktop.getDesktop().open(path);                         
-        }
-        catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }    
-    
-}
+    document.close();
+%>
